@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Controller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <style>
+    body{
+      background-color: black;
+    }
+    #message {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      font-family: bit;
+      text-align: center;
+      font-size: 3em;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="message">
+ Welcome
+  </div>
+
+  <script type="text/javascript">
+    var cachebuster = Math.round(new Date().getTime() / 1000);
+    document.write('<scr'+'ipt type="text/javascript" src="app.min.js?cb=' +cachebuster+'"></scr' + 'ipt>');
+   </script>
+    
+</body>
+
+</html>

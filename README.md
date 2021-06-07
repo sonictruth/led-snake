@@ -1,2 +1,3 @@
 # led-snake
-Classic snake game 🐍 using leds
+Raspberry PI snake game 🐍 using ws281x leds for display and browser as a controller.
+

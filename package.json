@@ -1,0 +1,21 @@
+{
+  "name": "ledlow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node-dev index.js --respawn"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ecstatic": "^4.1.4",
+    "hud-gamepad": "^0.5.9",
+    "ws": "^7.4.6",
+    "ws2812draw": "^2.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.12.6",
+    "node-dev": "^7.0.0"
+  }
+}
