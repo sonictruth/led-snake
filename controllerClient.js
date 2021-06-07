@@ -13,19 +13,14 @@ function showMessage(text) {
 
 showMessage(`Connecting to: ${url}`);
 
-socket.addEventListener('close', () => {
-    setTimeout();
-})
-
-socket.addEventListener('open', event => {
-    showMessage(`Connected.`);
-});
-
-socket.addEventListener('message', event => {
-    showMessage(event.data);
-});
+socket.addEventListener('close', () => reloadPage());
 
 window.addEventListener("orientationchange", () => reloadPage());
+
+socket.addEventListener('open', event => showMessage(`Connected.`));
+
+socket.addEventListener('message', event => showMessage(event.data));
+
 
 GamePad.setup({
     debug: false,
