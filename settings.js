@@ -1,15 +1,17 @@
 const {
-	LedColor,
-	MatrixPaddingOption,
+    LedColor,
+    MatrixPaddingOption,
 } = require('ws2812draw');
 
 const screenWidth = 32;
 const screenHeight = 8;
 const screenBrightness = 50;
-const backgroundColor = LedColor.BLUE;
+const backgroundColor = LedColor.BLACK;
 const foregroundColor = LedColor.RED;
 const serverPort = 8080;
 const fps = 10;
+
+
 
 const letterOptions = {
     foregroundColor,

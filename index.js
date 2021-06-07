@@ -79,13 +79,14 @@ const controllerServer = require('./controllerServer.js');
 	}
 
 	function handleGameInput() {
-		if (snakeDirection[0] === 0 && buttonsStates['x-dir'] !== 0) {
-			snakeDirection[0] = buttonsStates['x-dir'];
-			snakeDirection[1] = 0;
-		}
-		if (snakeDirection[1] === 0 && buttonsStates['y-dir'] !== 0) {
-			snakeDirection[0] = 0;
-			snakeDirection[1] = buttonsStates['y-dir'];
+		if (buttonsStates['left'] === 1 && snakeDirection[0] === 0) {
+			snakeDirection = [-1, 0];
+		} else if (buttonsStates['right'] === 1 && snakeDirection[0] === 0) {
+			snakeDirection = [1, 0];
+		} else if (buttonsStates['up'] === 1 && snakeDirection[1] === 0) {
+			snakeDirection = [0, -1];
+		} else if (buttonsStates['down'] === 1 && snakeDirection[1] === 0) {
+			snakeDirection = [0, 1];
 		}
 	}
 
@@ -163,7 +164,8 @@ const controllerServer = require('./controllerServer.js');
 		switch (currrentScreen) {
 			case screens.MAIN:
 				if (writingEventEmitter === null) {
-					writingEventEmitter = write(`Use your phone to connect to ${hostname}`);
+					writingEventEmitter =
+						write(`Use your phone to connect to ${hostname}`, 0xfc0011, 0x07240d);
 				}
 				if (buttonsStates.start === 1) {
 					writingEventEmitter.emit('stop');
@@ -181,7 +183,10 @@ const controllerServer = require('./controllerServer.js');
 				break;
 			case screens.END:
 				if (writingEventEmitter === null) {
-					writingEventEmitter = write(`GAME OVER Your score is ${score}. Press start to continue. `);
+					writingEventEmitter =
+						write(`GAME OVER Your score is ${score}. Press start to continue. `,
+							0x0000ff,
+							0x505416);
 					sendMessageToController(`Game Over! Your score is ${score}.`);
 				}
 				if (buttonsStates.start === 1) {

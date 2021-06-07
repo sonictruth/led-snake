@@ -18,17 +18,23 @@ function rgbTobgr(hexColor) {
     return out;
 }
 
-function writePromise(text) {
+function writePromise(text, foregroundColor, backgroundColor) {
     const p = new Promise(resolve => {
-        const event = write(text);
+        const event = write(text, foregroundColor, backgroundColor);
         event.on('done', () => resolve());
     });
     return p;
 }
 
-function write(text) {
+function write(text, foregroundColor = 0xff0000, backgroundColor = 0x000000) {
+    foregroundColor = rgbTobgr(foregroundColor);
+    backgroundColor = rgbTobgr(backgroundColor);
     return drawScrollingText(
-        screenWidth, screenBrightness, text, letterOptions, scrollOptions
+        screenWidth,
+        screenBrightness,
+        text,
+        { ...letterOptions, foregroundColor, backgroundColor },
+        { ...scrollOptions, padBackgroundColor: backgroundColor }
     );
 }
 

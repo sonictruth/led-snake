@@ -24,15 +24,21 @@ socket.addEventListener('message', event => {
 GamePad.setup({
     debug: false,
     trace: false,
-    start: false,
-    joystick: true,
+    start: true,
+    joystick: false,
     hint: true,
     buttons: [
-        { name: "start", "key": " " },
+
+        { name: "right", "key": "d" },
+        { name: "down", "key": "s" },
+
+        { name: "up", "key": "w" },
+        { name: "left", "key": "a" },
+
     ]
 });
 
-MultiKey.setup(GamePad.events, "a ", true);
+MultiKey.setup(GamePad.events, "wsad ", true);
 
 let state = JSON.stringify(GamePad.observe());
 
@@ -44,5 +50,11 @@ function loop() {
     state = newState;
     window.requestAnimationFrame(loop);
 }
+
+document.addEventListener('keydown', event => {
+    if (event.key === ' ') {
+        socket.send(JSON.stringify({ start: 1 }));
+    }
+});
 
 loop();
