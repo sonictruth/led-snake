@@ -3,6 +3,10 @@ const { MultiKey, GamePad } = require('hud-gamepad');
 const url = `ws://${document.location.hostname}:${document.location.port}`;
 const socket = new WebSocket(url);
 
+function reloadPage() {
+    setTimeout(() => document.location.reload(), 1000);
+}
+
 function showMessage(text) {
     document.getElementById('message').innerHTML = text;
 }
@@ -10,7 +14,7 @@ function showMessage(text) {
 showMessage(`Connecting to: ${url}`);
 
 socket.addEventListener('close', () => {
-    setTimeout(() => document.location.reload());
+    setTimeout();
 })
 
 socket.addEventListener('open', event => {
@@ -20,6 +24,8 @@ socket.addEventListener('open', event => {
 socket.addEventListener('message', event => {
     showMessage(event.data);
 });
+
+window.addEventListener("orientationchange", () => reloadPage());
 
 GamePad.setup({
     debug: false,
@@ -37,6 +43,7 @@ GamePad.setup({
 
     ]
 });
+
 
 MultiKey.setup(GamePad.events, "wsad ", true);
 
