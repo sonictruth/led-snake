@@ -155,8 +155,6 @@ const controllerServer = require('./controllerServer.js');
 	}
 
 
-	clearScreen(screen);
-
 	function gameLoop() {
 		var currentTime = Date.now();
 		var elapsedTime = currentTime - lastTime;
