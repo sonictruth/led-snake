@@ -1,5 +1,6 @@
 # led-snake
-Raspberry PI snake game 🐍 using ws281x leds for display and browser as a controller.
+- Raspberry PI snake game 🐍 
+- Uses WS281x LEDs for display and a browser as a controller.
 
 ## Screen
 <img src="screen2.gif" width="500">
